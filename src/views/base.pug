@@ -10,14 +10,16 @@ html(lang="ko")
                 ul 
                     li 
                         a(href="/") Home
-                    li 
-                        a(href="/videos/upload") Uplaod Video
-                    li 
-                        a(href="/search") Search
-                    li 
+                if !req.session.loggedIn //pug랑 공유 안해서 사이트 안나올 것
+                    li
                         a(href="/join") Join
                     li 
                         a(href="/login") Login
+                li 
+                    a(href="/videos/upload") Uplaod Video
+                li 
+                    a(href="/search") Search
+                    
 
         main  
             block content 

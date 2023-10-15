@@ -6,6 +6,6 @@ import app from "./server"
 const PORT = 4523;
 
 const handleListening = () => 
-    console.log("Server listening on port 4523!");
+    console.log("✅ Server listening on port 4523! ✅");
 
 app.listen(PORT, handleListening);
