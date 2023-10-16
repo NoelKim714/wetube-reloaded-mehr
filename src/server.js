@@ -4,6 +4,7 @@ import session from "express-session";
 import globalRouter from "./routers/rootRouter";
 import videoRouter from "./routers/videoRouter";
 import rootRouter from "./routers/rootRouter";
+import { localsMiddleware } from "./middlewares";
 
 const app = express();
 const logger = morgan("dev");
@@ -19,20 +20,13 @@ app.use(
         saveUninitialized: true,
     })
 );
-app.use((req,res,next) => {
-    req.sessionStore.all((error, sessions) => {
-        console.log(sessions);
-        next();
-    });
-});
-app.get("/add-one", (req,res,next) => {
-    req.session.potato += 1;
-    return res.send(`${req.session.id}\n${req.session.potato} potato!`)
-    
-});
+//locals after session middleware
+app.use(localsMiddleware);
 /*coding before router*/
-app.use("/", globalRouter);
-app.use("/videos", videoRouter);
 app.use("/users", rootRouter);
+app.use("/videos", videoRouter);
+app.use("/", globalRouter);
+
+
 
 export default app;
