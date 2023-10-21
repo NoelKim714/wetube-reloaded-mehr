@@ -1,3 +1,4 @@
+"조만간 bun으로 싸그리 바꾸기"
 
 import express from "express";
 import morgan from "morgan";
