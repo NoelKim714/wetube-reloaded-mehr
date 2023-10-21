@@ -1,4 +1,4 @@
-"main"
+"This is the MAIN"
 
 import express from "express";
 import morgan from "morgan";
