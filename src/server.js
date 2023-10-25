@@ -1,12 +1,10 @@
-"This is the MAIN"
-
 import express from "express";
 import morgan from "morgan";
 import session from "express-session";
 import MongoStore from "connect-mongo";
-import globalRouter from "./routers/rootRouter";
-import videoRouter from "./routers/videoRouter";
 import rootRouter from "./routers/rootRouter";
+import videoRouter from "./routers/videoRouter";
+import userRouter from "./routers/userRouter";
 import { localsMiddleware } from "./middlewares";
 
 const app = express();
@@ -30,9 +28,10 @@ app.use(
 //locals after session middleware
 app.use(localsMiddleware);
 /*coding before router*/
-app.use("/users", rootRouter);
+app.use("/", rootRouter);
+app.use("/users", userRouter);
 app.use("/videos", videoRouter);
-app.use("/", globalRouter);
+
 
 
 
