@@ -27,8 +27,9 @@ app.use(
 );
 //locals after session middleware
 app.use(localsMiddleware);
-/*coding before router*/
 app.use("/uploads", express.static("uploads"));
+app.use("/static", express.static("assets"));
+/*coding before router*/
 app.use("/", rootRouter);
 app.use("/users", userRouter);
 app.use("/videos", videoRouter);
