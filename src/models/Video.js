@@ -8,6 +8,10 @@ const videoSchema = new mongoose.Schema({
         minLength: 3,
         maxLength: 50,
     },
+    fileUrl: {
+        type: String,
+        required: true
+    },
     description: {
         type: String,
         required: true,
@@ -34,6 +38,12 @@ const videoSchema = new mongoose.Schema({
             default: 0, 
             required: true},
     },
+    owner: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: "User",
+        
+    },
 });
 
 videoSchema.static('formatHashtags', function(hashtags) {
@@ -45,4 +55,3 @@ const Video = mongoose.model("Video", videoSchema);
 
 export default Video;
 
-////
