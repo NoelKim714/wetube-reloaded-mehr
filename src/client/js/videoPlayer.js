@@ -26,13 +26,6 @@ const handlePlayClick = (e) => {
   playBtnIcon.classList = video.paused ? "fas fa-play" : "fas fa-pause";
 };
 
-const handleKeyEvent = (e) => {
-    const KeyName = e.keyCode;
-    if (KeyName === 32) {
-    handlePlayClick();
-    }
-};
-
 const handleMuteClick = (e) => {
   if (video.muted) {
     video.muted = false;
@@ -58,7 +51,7 @@ const handleVolumeChange = (event) => {
 };
 
 const formatTime = (seconds) =>
-  new Date(seconds * 1000).toISOString().substring(14, 19);
+  new Date(seconds * 1000).toISOString().substr(14, 5);
 
 const handleLoadedMetadata = () => {
   totalTime.innerText = formatTime(Math.floor(video.duration));
@@ -108,19 +101,18 @@ const handleMouseLeave = () => {
 };
 
 const handleEnded = () => {
-  const {id} = videoContainer.dataset;
+  const { id } = videoContainer.dataset;
   fetch(`/api/videos/${id}/view`, {
-    method:"POST",
+    method: "POST",
   });
 };
 
 playBtn.addEventListener("click", handlePlayClick);
-playBtn.addEventListener("keydown", handleKeyEvent);
 muteBtn.addEventListener("click", handleMuteClick);
 volumeRange.addEventListener("input", handleVolumeChange);
-video.addEventListener("loadeddata", handleLoadedMetadata);
+video.addEventListener("loadedmetadata", handleLoadedMetadata);
 video.addEventListener("timeupdate", handleTimeUpdate);
-video.addEventListener("ended", handleEnded)
+video.addEventListener("ended", handleEnded);
 videoContainer.addEventListener("mousemove", handleMouseMove);
 videoContainer.addEventListener("mouseleave", handleMouseLeave);
 timeline.addEventListener("input", handleTimelineChange);

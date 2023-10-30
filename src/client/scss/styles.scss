@@ -17,7 +17,7 @@
 @import "./screens/search.scss";
 @import "./screens/profile.scss";
 @import "./screens/edit-profile.scss";
-
+@import "./screens/upload.scss";
 // Defaults
 a {
   color: inherit;
@@ -38,23 +38,13 @@ main {
   margin-top: 50px;
 }
 
-@keyframes taDa {
-  from {
-    transform: translateY(-100px);
-    opacity: 1;
-  }
-  to {
-    transform: translateY(100px);
-    opacity: 1;
-  }
-}
 @keyframes goAway {
   from {
     transform: none;
     opacity: 1;
   }
   to {
-    transform:translateY(-100px);
+    transform: translateY(-50px);
     opacity: 0;
   }
 }
@@ -69,8 +59,8 @@ main {
   padding: 10px 20px;
   border-radius: 10000px;
   text-align: center;
-  animation: goAway 1s ease-in-out forwards;
-  animation-delay: 3s;
+  animation: goAway 0.5s ease-in-out forwards;
+  animation-delay: 5s;
   &.error {
     background-color: tomato;
     color: white;
