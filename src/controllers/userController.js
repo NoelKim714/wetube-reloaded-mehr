@@ -35,6 +35,7 @@ export const postJoin = async (req, res) => {
     });
   }
 };
+
 export const getLogin = (req, res) =>
   res.render("login", { pageTitle: "Login" });
 
@@ -48,7 +49,7 @@ export const postLogin = async (req, res) => {
       errorMessage: "An account with this username does not exists.",
     });
   }
-  const ok = await bcrypt.compare(password, user.password);
+  const ok = bcrypt.compare(password, user.password);
   if (!ok) {
     return res.status(400).render("login", {
       pageTitle,
@@ -135,6 +136,7 @@ export const finishGithubLogin = async (req, res) => {
 
 export const logout = (req, res) => {
   req.session.destroy();
+  req.flash("info", "Bye Bye");
   return res.redirect("/");
 };
 export const getEdit = (req, res) => {
@@ -193,7 +195,8 @@ export const postChangePassword = async (req, res) => {
   }
   user.password = newPassword;
   await user.save();
-  return res.redirect("/users/logout");
+  req.flash("info", "Password updated");
+  return res.redirect("users/logout");
 };
 
 export const see = async (req, res) => {
@@ -208,7 +211,7 @@ export const see = async (req, res) => {
   if (!user) {
     return res.status(404).render("404", { pageTitle: "User not found." });
   }
-  return res.render("users/profile", {
+  return res.render("/users/profile", {
     pageTitle: user.name,
     user,
   });
