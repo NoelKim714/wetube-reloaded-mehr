@@ -2,7 +2,7 @@ name: wetube-reloaded-mehr
 app: node@20
 options:
   env:
-    - name: .ENV
+    - name: process.env
       value: secret
   ports: "4523"
 context:
