@@ -2,6 +2,8 @@ import Video from "../models/Video";
 import Comment from "../models/Comment";
 import User from "../models/User";
 
+
+
 export const home = async (req, res) => {
   const videos = await Video.find({})
     .sort({ createdAt: "desc" })
@@ -148,6 +150,7 @@ export const createComment = async (req,res) => {
   video.save();
   return res.status(201).json({newCommentId: comment._id});
 };
+
 export const deleteComment = async (req, res) => {
   const {
     session: {
