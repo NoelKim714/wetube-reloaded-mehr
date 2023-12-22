@@ -4,7 +4,7 @@
   "description": "",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NoelKim714/wetube-reloaded-mehr.git"
+    "url": "git+http://github.com/NoelKim714/wetube-reloaded-mehr.git"
   },
   "keywords": [
     "nono"
@@ -20,9 +20,9 @@
   "author": "NOEL",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/NoelKim714/wetube-reloaded-mehr/issues"
+    "url": "http://github.com/NoelKim714/wetube-reloaded-mehr/issues"
   },
-  "homepage": "https://github.com/NoelKim714/wetube-reloaded-mehr#readme",
+  "homepage": "http://github.com/NoelKim714/wetube-reloaded-mehr#readme",
   "dependencies": {
     "@ffmpeg/core": "^0.12.4",
     "@ffmpeg/ffmpeg": "^0.12.7",
