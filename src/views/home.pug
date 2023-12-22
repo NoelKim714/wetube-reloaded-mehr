@@ -1,10 +1,9 @@
-extends base.pug
+extends base
 include mixins/video
 
-
-block content 
-    ul
-    each video in videos
-        +video(video)
-    else 
-        li There is nothing to show you.
+block content
+    div.video-grid
+        each video in videos
+            +video(video)
+        else
+            span.empty__message No videos found
